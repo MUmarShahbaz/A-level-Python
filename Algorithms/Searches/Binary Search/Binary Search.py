@@ -9,6 +9,8 @@ def BinarySearch(SearchFor, SearchFrom):
             down = mid - 1
         elif SearchFrom[mid] < SearchFor:
             up = mid + 1
+    return None
 
+# Example Usage
 myList = [1, 2, 3, 4, 5, 6, 7, 8]
-print(BinarySearch(7, myList))
+print(f"Value found at index : {BinarySearch(int(input("Enter the value to search : ")), myList)}")

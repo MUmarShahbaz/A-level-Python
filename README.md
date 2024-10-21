@@ -2,9 +2,17 @@
 
 ## Content List
 
-### Algorithms
-1. [Insertion Sort](\Algorithms\Insertion%20Sort\Insertion%20Sort.py)
-2. [Binary Search](\Algorithms\Binary%20Search\Binary%20Search.py)
+### [Algorithms](Algorithms/)
+1. [Sorting](Algorithms/Sorting/)
+   1. [Bubble Sort](Algorithms/Sorting/Bubble%20Sort/)
+   2. [Insertion Sort](Algorithms/Sorting/Insertion%20Sort/)
+2. [Searches](Algorithms/Searches/)
+   1. [Binary Search](Algorithms/Searches/Binary%20Search/)
+   2. [Linear Search](Algorithms/Searches/Linear%20Search/)
+
+### [Data Structures](Data%20Structures/)
+1. [Queue](Data%20Structures/Queue/)
+2. [Stack](Data%20Structures/Stack/)
 
 ### Practicals
-1. [Bookshop Buy](\Q&A\Bookshop%20Buy\Bookshop%20Buy.py)
+1. [Bookshop Buy](Q&A/Bookshop%20Buy)
