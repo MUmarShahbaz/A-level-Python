@@ -46,7 +46,7 @@ class Queue:
 
 Clients = Queue(5)
 
-print("Queue (length 5) before anything is added to it")
+print("\n\n\n\nQueue (length 5) before anything is added to it")
 Clients.printItems()
 print("\nTry to pop an item")
 Clients.pop()
@@ -71,3 +71,4 @@ Clients.printItems()
 print("\nQueue after adding a new element")
 Clients.push("Schrödinger's Cat")
 Clients.printItems()
+print("\n\n\n\n")

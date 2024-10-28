@@ -45,7 +45,7 @@ class Stack:
 
 Books = Stack(5)
 
-print("Stack before anything is added to it")
+print("\n\n\n\nStack before anything is added to it")
 Books.printItems()
 
 print("\nStack after adding 3 elements")
@@ -62,3 +62,4 @@ Books.printItems()
 print("\nStack after adding a new element")
 Books.push("The Essence of Software")
 Books.printItems()
+print("\n\n\n\n")
