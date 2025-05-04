@@ -40,7 +40,7 @@ class Queue:
             if self.items[i] != None :
                 print(f"\t{self.items[i]}")
             else:
-                print(self.__name__)
+                print("\t.")
 
 # Example Usage
 
@@ -61,6 +61,7 @@ Clients.push("Ahmad")
 Clients.printItems()
 
 print("\nQueue after removing 6 elements from the new Queue")
+Clients.pop()
 Clients.pop()
 Clients.pop()
 Clients.pop()
