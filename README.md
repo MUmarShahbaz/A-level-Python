@@ -13,6 +13,8 @@
 ### [Data Structures](Data%20Structures/)
 1. [Queue](Data%20Structures/Queue/)
 2. [Stack](Data%20Structures/Stack/)
+3. [Linked List](Data%20Structures/Linked%20List/)
+3. [Binary Tree](Data%20Structures/Binary%20Tree/)
 
 ### Practicals
 1. [Bookshop Buy](Q&A/Bookshop%20Buy)

@@ -1,67 +1,80 @@
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, val):
+        self.Data = val
         self.left = None
         self.right = None
 
 class BinaryTree:
-    def __init__(self, length):
-        self.items = [Node(None)] * length
-        self.numberOfNodes = 0
-
-    def InsertNode(self, Node):
-        if self.numberOfNodes == len(self.items):
-            print(f"All {len(self.items)} nodes are full and contain data")
-            return False
-        else:
-            if self.numberOfNodes == 0:
-                print("Creating the first node")
-            else:
-                currentNodeIndex = 0
-                lastNodeIndex = 0
-                while currentNodeIndex != None:
-                    lastNodeIndex = currentNodeIndex
-                    if Node.value <= self.items[currentNodeIndex].value:
-                        currentNodeIndex = self.items[currentNodeIndex].left
-                    else:
-                        currentNodeIndex = self.items[currentNodeIndex].right
-                if Node.value <= self.items[lastNodeIndex].value:
-                    self.items[lastNodeIndex].left = self.numberOfNodes
-                else:
-                    self.items[lastNodeIndex].right = self.numberOfNodes
-            self.items[self.numberOfNodes] = Node
-            self.numberOfNodes = self.numberOfNodes + 1
-            return True
+    def __init__(self, length):                 # Constructor
+        self.items = [Node(None)] * length      # Container
+        self.start = None                       # Root Pointer
+        self.free = 0                           # Free Pointer
     
+    def InsertNode(self, Val):
+        if self.free == len(self.items):
+            print("Binary Tree is already full")
+            return
+        
+        self.items[self.free] = Node(Val)       # Place node at free pointer
+        if self.start == None:                  # Special Case for Root Node
+            self.start = self.free              # Root Pointer points to recently filled value
+            self.free = self.free + 1           # Free Pointer points to next free
+            return                              # Exit function after setting up Root
+        
+
+        currentNode = self.items[self.start]                    # Start at Root
+        while True:                                             # Loop will be broken from inside
+
+            if Val < currentNode.Data:
+                if currentNode.left == None:                    # If Left pointer already empty
+                    currentNode.left = self.free                # Left pointer points to recently filled value
+                    break                                       # Exit loop after insertion
+
+                else:
+                    currentNode = self.items[currentNode.left]  # Go to node at Left pointer
+
+            if Val > currentNode.Data:
+                if currentNode.right == None:                   # If Right pointer already empty
+                    currentNode.right = self.free               # Right pointer points to recently filled value
+                    break                                       # Exit loop after insertion
+                
+                else:
+                    currentNode = self.items[currentNode.right] # Go to node at Right pointer
+        self.free = self.free + 1               # Free Pointer points to next free
+
     def PrintTreeByValues(self):
         for i in range(len(self.items)):
             if self.items[i].left == None:
                 leftVal = None
             else:
-                leftVal = self.items[self.items[i].left].value
+                leftVal = self.items[self.items[i].left].Data
             if self.items[i].right == None:
                 rightVal = None
             else:
-                rightVal = self.items[self.items[i].right].value
-            print(f"[{i}]:\t {leftVal}\t<==\t {self.items[i].value} \t==>\t{rightVal}")
+                rightVal = self.items[self.items[i].right].Data
+            print(f"[{i}]:\t {leftVal}\t<==\t {self.items[i].Data} \t==>\t{rightVal}")
     
-    def PrintTreeByMemory(self):
-        count = 0
-        for i in self.items:
-            print(f"[{count}]:\t{i.left}\t<== {i.value} ==>\t{i.right}")
-            count = count + 1
+    def Traverse(self, Node):
+        if Node == None:
+            Node = self.items[self.start]                   # Traverse relative to the ROOT
+        if Node.left != None:
+            self.Traverse(self.items[Node.left])            # Traverse relative to the left of the current node
+        if Node.right != None:
+            self.Traverse(self.items[Node.right])           # Traverse relative to the right of the current node
+        print(Node.Data)
 
 
-myTree = BinaryTree(10)
+# Test
+bt = BinaryTree(7)
 
-myTree.InsertNode(Node(4))
-myTree.InsertNode(Node(3))
-myTree.InsertNode(Node(2))
-myTree.InsertNode(Node(1))
-myTree.InsertNode(Node(5))
-myTree.InsertNode(Node(6))
-myTree.InsertNode(Node(7))
+bt.InsertNode(4)
+bt.InsertNode(6)
+bt.InsertNode(3)
+bt.InsertNode(1)
+bt.InsertNode(8)
+bt.InsertNode(2)
+bt.InsertNode(7)
+bt.InsertNode(5)        # Adding 8th Node, expect full message
 
-myTree.PrintTreeByValues()
-print("\n"*5)
-myTree.PrintTreeByMemory()
+bt.PrintTreeByValues()
+bt.Traverse(None)
